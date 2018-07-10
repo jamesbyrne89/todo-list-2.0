@@ -10,7 +10,7 @@ class List extends Component {
   }
   render() {
     return (
-      <Card style={{ width: '70%', margin: '100px auto', maxWidth: '600px' }}>
+      <Card>
         The tasks list goes here.
       </Card>
     );
