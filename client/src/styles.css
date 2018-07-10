@@ -50,4 +50,10 @@
   font-weight: 300;
   padding: 0.5em 1em;
   border-radius: 3px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card } from 'react-materialize';
 import uuid from 'uuid';
 import Task from './Task';
-
+import AddTask from './AddTask';
 class List extends Component {
   constructor() {
     super();
@@ -13,13 +13,23 @@ class List extends Component {
       ]
     };
   }
+
+  handleAddNewTask = () => {
+    const name = prompt('Add new task');
+    const { tasks } = this.state;
+    if (name && name.trim().length > 0) {
+      this.setState({ tasks: [...tasks, { id: uuid(), name }] });
+    }
+  };
+
   render() {
     const { tasks } = this.state;
     return (
       <Card>
         The tasks list goes here.<ul>
-          {tasks.map(task => <Task key={task.id} name={task.name}></Task>)}
+          {tasks.map(task => <Task key={task.id} name={task.name} />)}
         </ul>
+        <AddTask handleAddNewTask={this.handleAddNewTask} />
       </Card>
     );
   }
