@@ -22,12 +22,16 @@ class List extends Component {
     }
   };
 
+  handleDeleteTask = (id) => {
+    this.setState({ tasks: this.state.tasks.filter(task => task.id !== id) })
+  }
+
   render() {
     const { tasks } = this.state;
     return (
       <Card>
-        The tasks list goes here.<ul>
-          {tasks.map(task => <Task key={task.id} name={task.name} />)}
+        <ul>
+          {tasks.map(task => <Task handleDeleteTask={this.handleDeleteTask} key={task.id} id={task.id} name={task.name} />)}
         </ul>
         <AddTask handleAddNewTask={this.handleAddNewTask} />
       </Card>
