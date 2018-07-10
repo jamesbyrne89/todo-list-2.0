@@ -1,24 +1,50 @@
+:root {
+    --serif: 'Playfair Display', georgia, serif;
+    --sans-serif: 'Lato', helvetica, system-ui;
+    --purple-gradient: linear-gradient(150deg, #511ea0, #fed8e9);
+}
+
 .app-container {
-  min-height: 100vh;
-  background: linear-gradient(150deg, #511ea0, #fed8e9);
+    min-height: 100vh;
+    background: var(--purple-gradient);
 }
 
 .nav {
-  background: white;
-  color: #222;
-  a {
-    color: inherit;
-  }
+    background: white;
+    color: #222;
+    font-family: var(--serif);
+    padding: 0.5em 1em;
+    height: auto;
+    .brand-logo {
+        position: relative;
+    }
+    a {
+        color: inherit;
+    }
 }
 
 .list-container {
-  width: 70%;
-  margin: 100px auto; 
-  max-width: 600px;
-  position: relative;
+    margin: 100px auto;
+    max-width: 600px;
+    position: relative;
+    font-family: var(--sans-serif);
+    ul {
+        margin-top: 3rem;
+    }
 }
 
 .add-task-btn {
-  float: right;
-  margin: -50px 50px; 
+    float: right;
+    margin: -40px 50px;
+    background: #222;
+}
+
+.task {
+    margin: 1rem auto 0;
+    color: #fff;
+    font-weight: 400;
+    background: var(--purple-gradient);
+    font-weight: 300;
+    padding: 0.5em 1em;
+    border-radius: 3px;
 }
