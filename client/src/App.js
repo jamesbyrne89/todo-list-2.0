@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles.css';
+import './styles/styles.min.css';
 import NavBar from './components/NavBar';
 import List from './components/List';
 import NewTaskModal from './components/Modal';
