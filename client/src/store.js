@@ -1,5 +1,5 @@
 import { createStore, compose } from 'redux';
-import { rootReducer } from './reducers/index';
+import tasks from './reducers/tasks';
 
 const defaultState = {
   tasks: [
@@ -9,4 +9,6 @@ const defaultState = {
   ]
 };
 
-const store = createStore(rootReducer, defaultState);
+const store = createStore(tasks, defaultState);
+
+export default store;

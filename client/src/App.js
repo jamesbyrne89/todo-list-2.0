@@ -4,8 +4,23 @@ import NavBar from './components/NavBar';
 import List from './components/List';
 import NewTaskModal from './components/Modal';
 import AddTask from './components/AddTask';
-import { createStore, applyMiddleware, compose } from 'redux';
-import { mapStateToProps } from 'react-redux';
+import { connect } from 'react-redux';
+
+const mapStateToProps = store => {
+  return {
+    tasks: store.tasks
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addTask: () => {
+      dispatch({
+        type: 'ADD_TASK'
+      });
+    }
+  };
+};
 
 class App extends Component {
   render() {
@@ -21,4 +36,7 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

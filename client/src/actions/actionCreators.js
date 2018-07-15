@@ -1,5 +1,5 @@
 // Create a new task
-function addTask(task) {
+export function addTask(task) {
   return {
     type: 'ADD_TASK',
     task
@@ -7,7 +7,7 @@ function addTask(task) {
 }
 
 // Mark task as completed
-function markTaskCompleted(id) {
+export function markTaskCompleted(id) {
   return {
     type: 'MARK_COMPLETED',
     id
@@ -16,7 +16,7 @@ function markTaskCompleted(id) {
 
 // Delete task
 
-function deleteTask(id) {
+export function deleteTask(id) {
   return {
     type: 'DELETE_TASK',
     id
