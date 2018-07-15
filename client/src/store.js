@@ -1,4 +1,4 @@
-import { createStore, compose } from 'redux';
+import { createStore } from 'redux';
 import tasks from './reducers/tasks';
 
 const defaultState = {

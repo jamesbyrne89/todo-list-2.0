@@ -14,10 +14,23 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addTask: () => {
+    addTask: newTask => {
       dispatch({
-        type: 'ADD_TASK'
+        type: 'ADD_TASK',
+        newTask
       });
+    },
+    markCompleted: id => {
+      return {
+        type: 'MARK_COMPLETED',
+        id
+      };
+    },
+    deleteTask: id => {
+      return {
+        type: 'DELETE_TASK',
+        id
+      };
     }
   };
 };
@@ -30,7 +43,6 @@ class App extends Component {
         <main className="list-container">
           <List />
         </main>
-        <NewTaskModal trigger={AddTask} />
       </div>
     );
   }

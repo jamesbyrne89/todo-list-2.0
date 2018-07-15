@@ -1,5 +1,9 @@
 function tasks(state = {}, action) {
-  console.log(state, action);
+  switch (action.type) {
+    case 'ADD_TASK': {
+      state = [...state, action.task];
+    }
+  }
   return state;
 }
 
