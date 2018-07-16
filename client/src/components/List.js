@@ -3,7 +3,7 @@ import { Card } from 'react-materialize';
 import uuid from 'uuid';
 import Task from './Task';
 import AddTask from './AddTask';
-import { Modal, Button } from 'react-materialize';
+import { Modal, Button, Input, Row } from 'react-materialize';
 class List extends Component {
   constructor() {
     super();
@@ -42,7 +42,8 @@ class List extends Component {
           ))}
         </ul>
         <Modal
-          header="Modal Header"
+          header="Add New Task"
+          className="new-task-modal"
           trigger={
             <Button
               floating
@@ -53,15 +54,12 @@ class List extends Component {
             />
           }
         >
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum
-          </p>
+          <Input
+            s={6}
+            className="add-task-input"
+            onSubmit={() => console.log('Hi!')}
+            autofocus
+          />
         </Modal>
       </Card>
     );
