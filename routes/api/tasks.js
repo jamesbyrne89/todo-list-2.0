@@ -35,7 +35,7 @@ router.delete('/:id', (req, res) => {
   Task.findById(req.params.id)
     .then(task => task.remove())
     .then(() => console.log(res.json({ success: true })))
-    .catch(err => res.status(404).json({success: false}) );
+    .catch(err => res.status(404).json({ success: false }));
 });
 
 module.exports = router;

@@ -4,6 +4,8 @@ import uuid from 'uuid';
 import Task from './Task';
 import AddTask from './AddTask';
 import { Modal, Button, Input, Row } from 'react-materialize';
+
+
 class List extends Component {
   constructor() {
     super();
@@ -13,19 +15,19 @@ class List extends Component {
         { id: uuid(), name: 'Walk dog' }
       ]
     };
+    
   }
 
-  handleAddNewTask = () => {
-    const name = prompt('Add new task');
+  handleAddNewTask = (input) => {
     const { tasks } = this.state;
-    if (name && name.trim().length > 0) {
-      this.setState({ tasks: [...tasks, { id: uuid(), name }] });
-    }
+      this.setState({ tasks: [...tasks, input] });
   };
 
   handleDeleteTask = id => {
     this.setState({ tasks: this.state.tasks.filter(task => task.id !== id) });
   };
+
+  
 
   render() {
     const { tasks } = this.state;
@@ -41,26 +43,8 @@ class List extends Component {
             />
           ))}
         </ul>
-        <Modal
-          header="Add New Task"
-          className="new-task-modal"
-          trigger={
-            <Button
-              floating
-              large
-              className="add-task-btn"
-              waves="light"
-              icon="add"
-            />
-          }
-        >
-          <Input
-            s={6}
-            className="add-task-input"
-            onSubmit={() => console.log('Hi!')}
-            autofocus
-          />
-        </Modal>
+
+          <AddTask handleAddNewTask={this.handleAddNewTask} />
       </Card>
     );
   }

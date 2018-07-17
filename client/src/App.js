@@ -3,7 +3,6 @@ import './styles/styles.min.css';
 import NavBar from './components/NavBar';
 import List from './components/List';
 import NewTaskModal from './components/Modal';
-import AddTask from './components/AddTask';
 import { connect } from 'react-redux';
 
 const mapStateToProps = store => {
