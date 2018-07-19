@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './styles/styles.min.css';
 import NavBar from './components/NavBar';
 import List from './components/List';
-import NewTaskModal from './components/Modal';
 import { connect } from 'react-redux';
 
 const mapStateToProps = store => {
@@ -14,6 +13,7 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
   return {
     addTask: newTask => {
+      console.log(newTask);
       dispatch({
         type: 'ADD_TASK',
         newTask
@@ -40,7 +40,7 @@ class App extends Component {
       <div className="app-container">
         <NavBar />
         <main className="list-container">
-          <List />
+          <List tasks={this.props.tasks} handleAddTask={this.props.addTask} />
         </main>
       </div>
     );

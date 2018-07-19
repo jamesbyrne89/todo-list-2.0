@@ -1,7 +1,7 @@
 function tasks(state = {}, action) {
   switch (action.type) {
     case 'ADD_TASK': {
-      state = [...state, action.task];
+      state = [...state, action.newTask];
     }
   }
   return state;

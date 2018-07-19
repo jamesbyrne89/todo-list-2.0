@@ -3,8 +3,6 @@ import { Card } from 'react-materialize';
 import uuid from 'uuid';
 import Task from './Task';
 import AddTask from './AddTask';
-import { Modal, Button, Input, Row } from 'react-materialize';
-
 
 class List extends Component {
   constructor() {
@@ -15,19 +13,17 @@ class List extends Component {
         { id: uuid(), name: 'Walk dog' }
       ]
     };
-    
   }
 
-  handleAddNewTask = (input) => {
+  handleAddNewTask = input => {
     const { tasks } = this.state;
-      this.setState({ tasks: [...tasks, input] });
+    this.props.handleAddTask(input);
+    this.setState({ tasks: [...tasks, input] });
   };
 
   handleDeleteTask = id => {
     this.setState({ tasks: this.state.tasks.filter(task => task.id !== id) });
   };
-
-  
 
   render() {
     const { tasks } = this.state;
@@ -44,7 +40,7 @@ class List extends Component {
           ))}
         </ul>
 
-          <AddTask handleAddNewTask={this.handleAddNewTask} />
+        <AddTask handleAddNewTask={this.handleAddNewTask} />
       </Card>
     );
   }

@@ -12,7 +12,6 @@ class AddTask extends Component {
   handleInput = e => {
     this.setState({ input: e.target.value });
     if (e.keyCode === 13) {
-      console.log(e)
       this.onSubmit();
     }
   };
@@ -41,7 +40,7 @@ class AddTask extends Component {
           className="add-task-input"
           onKeyUp={this.handleInput}
           onSubmit={() => console.log('Hi!')}
-          autofocus
+          autoFocus
         />
       </Modal>
     );
