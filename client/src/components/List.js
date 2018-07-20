@@ -1,32 +1,23 @@
 import React, { Component } from 'react';
 import { Card } from 'react-materialize';
-import uuid from 'uuid';
 import Task from './Task';
 import AddTask from './AddTask';
 
 class List extends Component {
   constructor() {
     super();
-    this.state = {
-      tasks: [
-        { id: uuid(), name: 'Buy milk' },
-        { id: uuid(), name: 'Walk dog' }
-      ]
-    };
+    this.state = {};
   }
 
   handleAddNewTask = input => {
-    const { tasks } = this.state;
     this.props.handleAddTask(input);
-    this.setState({ tasks: [...tasks, input] });
   };
 
-  handleDeleteTask = id => {
-    this.setState({ tasks: this.state.tasks.filter(task => task.id !== id) });
-  };
+  handleDeleteTask = id => {};
 
   render() {
-    const { tasks } = this.state;
+    const { tasks } = this.props;
+    console.log(tasks);
     return (
       <Card>
         <ul>

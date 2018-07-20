@@ -5,15 +5,13 @@ import List from './components/List';
 import { connect } from 'react-redux';
 
 const mapStateToProps = store => {
-  return {
-    tasks: store.tasks
-  };
+  console.log(store);
+  return store;
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     addTask: newTask => {
-      console.log(newTask);
       dispatch({
         type: 'ADD_TASK',
         newTask
@@ -25,16 +23,20 @@ const mapDispatchToProps = dispatch => {
         id
       };
     },
-    deleteTask: id => {
-      return {
+    deleteTask: task => {
+      dispatch({
         type: 'DELETE_TASK',
-        id
-      };
+        task
+      });
     }
   };
 };
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   render() {
     return (
       <div className="app-container">

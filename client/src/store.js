@@ -2,11 +2,7 @@ import { createStore } from 'redux';
 import tasks from './reducers/tasks';
 
 const defaultState = {
-  tasks: [
-    { name: 'Name', deadline: 'Deadline', completed: false },
-    { name: 'Name', deadline: 'Deadline', completed: false },
-    { name: 'Name', deadline: 'Deadline', completed: false }
-  ]
+  tasks: []
 };
 
 const store = createStore(tasks, defaultState);

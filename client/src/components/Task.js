@@ -5,7 +5,7 @@ const Task = props => {
   return (
     <li className="task">
       <span className="task__name">{props.name}</span>
-      <DeleteTask handleDeleteTask={props.handleDeleteTask} id={props.id} />
+      <DeleteTask handleDeleteTask={props.handleDeleteTask} name={props.name} />
     </li>
   );
 };
