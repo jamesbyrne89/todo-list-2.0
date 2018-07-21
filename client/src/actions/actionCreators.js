@@ -3,9 +3,12 @@ import axios from 'axios';
 // Fetch tasks
 export function fetchTasks(res) {
   return function(dispatch) {
-    axios.get('/api/tasks').then(res => {
-      return dispatch({ type: 'FETCH_TASKS', payload: res.data });
-    });
+    axios
+      .get('/api/tasks')
+      .then(res => {
+        return dispatch({ type: 'FETCH_TASKS', payload: res.data });
+      })
+      .catch(err => console.log(err));
   };
 }
 
@@ -20,9 +23,12 @@ export function tasksLoading() {
 // Create a new task
 export function addTask(task) {
   return function(dispatch) {
-    axios.post('/api/tasks', task).then(res => {
-      return dispatch({ type: 'ADD_TASK', payload: res.data });
-    });
+    axios
+      .post('/api/tasks', task)
+      .then(res => {
+        return dispatch({ type: 'ADD_TASK', payload: res.data });
+      })
+      .catch(err => console.log(err.error));
   };
 }
 

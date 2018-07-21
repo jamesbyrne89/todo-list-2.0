@@ -30,6 +30,9 @@ class App extends Component {
     super(props);
     this.state = {};
   }
+  componentDidMount() {
+    this.props.fetchTasks();
+  }
   render() {
     return (
       <div className="app-container">

@@ -11,9 +11,7 @@ const Task = require('../../models/Task');
 
 router.get('/', (req, res) => {
   console.log(req, res);
-  Task.find()
-    .sort({ date: -1 })
-    .then(tasks => res.json(items));
+  Task.find().then(tasks => res.json(tasks));
 });
 
 // @route POST api/tasks
@@ -21,7 +19,6 @@ router.get('/', (req, res) => {
 // @access Public
 
 router.post('/', (req, res) => {
-  console.log(req, res);
   const newTask = new Task({
     name: req.body.name,
     completed: false

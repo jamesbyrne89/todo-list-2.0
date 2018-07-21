@@ -17,7 +17,6 @@ class List extends Component {
 
   render() {
     const { tasks } = this.props;
-    console.log(tasks);
     return (
       <Card>
         <ul>

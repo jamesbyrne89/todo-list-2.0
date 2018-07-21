@@ -5,13 +5,11 @@ const express = require('express'),
   tasks = require('./routes/api/tasks');
 
 const env = dotenv.config({ path: 'config/variables.env' });
-
+const db = env.parsed.DATABASE;
 const app = express();
 
 // BodyParser middleware
 app.use(bodyParser.json());
-
-const db = env.parsed.DATABASE;
 
 // Connect mongoose to database
 mongoose
@@ -19,11 +17,11 @@ mongoose
     db,
     { useNewUrlParser: true }
   )
-  .then(() => console.log('db connected'))
+  .then(() => console.log('db connected', db))
   .catch(err => console.log(err));
 
 // Use routes
-app.use('/routes/api', tasks);
+app.use('/api/tasks', tasks);
 
 // Define port
 const port = process.env.port || 5000;
