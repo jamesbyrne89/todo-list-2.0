@@ -3,32 +3,23 @@ import './styles/styles.min.css';
 import NavBar from './components/NavBar';
 import List from './components/List';
 import { connect } from 'react-redux';
+import {
+  addTask,
+  deleteTask,
+  fetchTasks,
+  markCompleted
+} from './actions/actionCreators';
 
 const mapStateToProps = store => {
-  console.log(store);
   return store;
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    addTask: newTask => {
-      dispatch({
-        type: 'ADD_TASK',
-        newTask
-      });
-    },
-    markCompleted: id => {
-      return {
-        type: 'MARK_COMPLETED',
-        id
-      };
-    },
-    deleteTask: task => {
-      dispatch({
-        type: 'DELETE_TASK',
-        task
-      });
-    }
+    addTask: dispatch(addTask),
+    markCompleted: dispatch(markCompleted),
+    deleteTask: dispatch(deleteTask),
+    fetchTasks: dispatch(fetchTasks)
   };
 };
 

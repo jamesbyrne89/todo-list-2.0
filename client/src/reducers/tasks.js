@@ -1,17 +1,26 @@
-function tasks(state = [], action) {
+const initialState = {
+  tasks: [],
+  loading: false
+};
+
+function tasks(state = initialState, action) {
   const { tasks } = state;
   switch (action.type) {
     case 'ADD_TASK':
-      return { tasks: [...tasks, action.newTask] };
-      break;
+      return {
+        ...state,
+        tasks: [...tasks, action.newTask]
+      };
     case 'DELETE_TASK':
-      return { tasks: tasks.filter(task => task.name !== action.task.name) };
-      break;
+      return {
+        ...state,
+        tasks: tasks.filter(task => task.name !== action.task.name)
+      };
+    case 'FETCH_TASKS':
+      return {};
     default:
       return { tasks: [] };
   }
-  console.log(state);
-  return state;
 }
 
 export default tasks;

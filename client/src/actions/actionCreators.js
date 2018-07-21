@@ -1,3 +1,15 @@
+import axios from 'axios';
+
+// Fetch tasks
+
+export function fetchTasks(res) {
+  return function(dispatch) {
+    axios
+      .get('/api/tasks')
+      .then(res => dispatch({ type: 'FETCH_ITEMS', payload: res.data }));
+  };
+}
+
 // Create a new task
 export function addTask(task) {
   return {
@@ -7,7 +19,7 @@ export function addTask(task) {
 }
 
 // Mark task as completed
-export function markTaskCompleted(id) {
+export function markCompleted(id) {
   return {
     type: 'MARK_COMPLETED',
     id
