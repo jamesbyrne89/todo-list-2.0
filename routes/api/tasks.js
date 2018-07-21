@@ -3,13 +3,14 @@ const express = require('express'),
 
 // Tasks model
 
-const Task = require('../../models/task');
+const Task = require('../../models/Task');
 
 // @route GET api/tasks
 // desc Get all tasks
 // @access Public
 
 router.get('/', (req, res) => {
+  console.log(req, res);
   Task.find()
     .sort({ date: -1 })
     .then(tasks => res.json(items));
@@ -20,6 +21,7 @@ router.get('/', (req, res) => {
 // @access Public
 
 router.post('/', (req, res) => {
+  console.log(req, res);
   const newTask = new Task({
     name: req.body.name,
     completed: false

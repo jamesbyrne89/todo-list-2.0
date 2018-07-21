@@ -4,6 +4,7 @@ import NavBar from './components/NavBar';
 import List from './components/List';
 import { connect } from 'react-redux';
 import {
+  tasksLoading,
   addTask,
   deleteTask,
   fetchTasks,
@@ -19,7 +20,8 @@ const mapDispatchToProps = dispatch => {
     addTask: dispatch(addTask),
     markCompleted: dispatch(markCompleted),
     deleteTask: dispatch(deleteTask),
-    fetchTasks: dispatch(fetchTasks)
+    fetchTasks: dispatch(fetchTasks),
+    tasksLoading: dispatch(tasksLoading)
   };
 };
 

@@ -18,7 +18,6 @@ class AddTask extends Component {
 
   onSubmit = () => {
     this.props.handleAddNewTask({
-      id: '',
       name: this.state.input,
       completed: false
     });

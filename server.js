@@ -23,9 +23,9 @@ mongoose
   .catch(err => console.log(err));
 
 // Use routes
-app.use('./routes/api', tasks)
+app.use('/routes/api', tasks);
 
-  // Define port
+// Define port
 const port = process.env.port || 5000;
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

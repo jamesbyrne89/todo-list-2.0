@@ -3,21 +3,32 @@ const initialState = {
   loading: false
 };
 
-function tasks(state = initialState, action) {
+function tasks(state = initialState, { type, payload }) {
   const { tasks } = state;
-  switch (action.type) {
+  switch (type) {
+    case 'FETCH_TASKS':
+      return {
+        ...state,
+        tasks: payload,
+        loading: false
+      };
+    case 'TASKS_LOADING': {
+      return {
+        ...state,
+        loading: payload.loading
+      };
+    }
     case 'ADD_TASK':
       return {
         ...state,
-        tasks: [...tasks, action.newTask]
+        tasks: [...tasks, payload.newTask]
       };
     case 'DELETE_TASK':
       return {
         ...state,
-        tasks: tasks.filter(task => task.name !== action.task.name)
+        tasks: tasks.filter(task => task.name !== payload.task.name)
       };
-    case 'FETCH_TASKS':
-      return {};
+
     default:
       return { tasks: [] };
   }
