@@ -18,7 +18,7 @@ mongoose
     { useNewUrlParser: true }
   )
   .then(() => console.log('db connected', db))
-  .catch(err => console.log(err));
+  .catch(err => console.log('MongoDB error'));
 
 // Use routes
 app.use('/api/tasks', tasks);

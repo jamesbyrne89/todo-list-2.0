@@ -8,7 +8,7 @@ export function fetchTasks(res) {
       .then(res => {
         return dispatch({ type: 'FETCH_TASKS', payload: res.data });
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log('fetchTasks error'));
   };
 }
 
@@ -28,7 +28,7 @@ export function addTask(task) {
       .then(res => {
         return dispatch({ type: 'ADD_TASK', payload: res.data });
       })
-      .catch(err => console.log(err.error));
+      .catch(err => console.log('addTask error'));
   };
 }
 
