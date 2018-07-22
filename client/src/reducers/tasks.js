@@ -4,6 +4,7 @@ const initialState = {
 };
 
 function tasks(state = initialState, { type, payload }) {
+  console.log(type, payload);
   const { tasks } = state;
   switch (type) {
     case 'FETCH_TASKS':
@@ -27,7 +28,7 @@ function tasks(state = initialState, { type, payload }) {
     case 'DELETE_TASK':
       return {
         ...state,
-        tasks: tasks.filter(task => task.name !== payload.task.name)
+        tasks: tasks.filter(task => task._id !== payload)
       };
     default:
       return { tasks: [] };

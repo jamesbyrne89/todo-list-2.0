@@ -5,7 +5,10 @@ const Task = props => {
   return (
     <li className="task">
       <span className="task__name">{props.name}</span>
-      <DeleteTask handleDeleteTask={props.handleDeleteTask} name={props.name} />
+      <span className="task__name">
+        {props.completed ? 'Completed' : 'Not yet completed'}
+      </span>
+      <DeleteTask onClick={() => props.handleDeleteTask(props.id)} />
     </li>
   );
 };

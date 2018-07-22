@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Fetch tasks
-export function fetchTasks(res) {
+export function fetchTasks() {
   return function(dispatch) {
     axios
       .get('/api/tasks')
@@ -21,13 +21,11 @@ export function tasksLoading() {
 }
 
 // Create a new task
-export function addTask(dispatch) {
-  return function(task) {
-    console.log(task);
+export function addTask(task) {
+  return function(dispatch) {
     axios
       .post('/api/tasks', task)
       .then(res => {
-        console.log(res.data);
         return dispatch({ type: 'ADD_TASK', payload: res.data });
       })
       .catch(err => console.log('addTask error'));
@@ -45,8 +43,16 @@ export function markCompleted(id) {
 // Delete task
 
 export function deleteTask(id) {
-  return {
-    type: 'DELETE_TASK',
-    id
+  return function(dispatch) {
+    console.log(id);
+    axios
+      .delete(`/api/tasks/${id}`)
+      .then(res => {
+        return dispatch({
+          type: 'DELETE_TASK',
+          payload: id
+        });
+      })
+      .catch(err => console.log('delTask error'));
   };
 }

@@ -17,9 +17,9 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addTask: dispatch(addTask),
+    addTask: input => dispatch(addTask(input)),
     markCompleted: dispatch(markCompleted),
-    deleteTask: dispatch(deleteTask),
+    deleteTask: id => dispatch(deleteTask(id)),
     fetchTasks: () => dispatch(fetchTasks()),
     tasksLoading: dispatch(tasksLoading)
   };
@@ -38,7 +38,11 @@ class App extends Component {
       <div className="app-container">
         <NavBar />
         <main className="list-container">
-          <List tasks={this.props.tasks} handleAddTask={this.props.addTask} />
+          <List
+            tasks={this.props.tasks}
+            handleAddTask={this.props.addTask}
+            handleDeleteTask={this.props.deleteTask}
+          />
         </main>
       </div>
     );

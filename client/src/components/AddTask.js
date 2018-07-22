@@ -43,7 +43,6 @@ class AddTask extends Component {
           s={6}
           className="add-task-input"
           onKeyUp={this.handleInput}
-          onSubmit={() => console.log('Hi!')}
           autoFocus
         />
       </Modal>

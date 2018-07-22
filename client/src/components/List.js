@@ -9,13 +9,6 @@ class List extends Component {
     this.state = {};
   }
 
-  handleAddNewTask = input => {
-    console.log(input);
-    this.props.handleAddTask(input);
-  };
-
-  handleDeleteTask = id => {};
-
   render() {
     const { tasks } = this.props;
     console.log(tasks);
@@ -24,14 +17,16 @@ class List extends Component {
         <ul>
           {tasks.map(task => (
             <Task
-              handleDeleteTask={this.handleDeleteTask}
+              handleDeleteTask={this.props.handleDeleteTask}
               key={task._id}
+              id={task._id}
               name={task.name}
+              completed={task.completed}
             />
           ))}
         </ul>
 
-        <AddTask handleAddNewTask={this.handleAddNewTask} />
+        <AddTask handleAddNewTask={this.props.handleAddTask} />
       </Card>
     );
   }
