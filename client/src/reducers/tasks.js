@@ -19,16 +19,16 @@ function tasks(state = initialState, { type, payload }) {
       };
     }
     case 'ADD_TASK':
+      console.log(payload);
       return {
         ...state,
-        tasks: [...tasks, payload.newTask]
+        tasks: [...tasks, payload]
       };
     case 'DELETE_TASK':
       return {
         ...state,
         tasks: tasks.filter(task => task.name !== payload.task.name)
       };
-
     default:
       return { tasks: [] };
   }

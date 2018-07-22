@@ -10,6 +10,7 @@ class List extends Component {
   }
 
   handleAddNewTask = input => {
+    console.log(input);
     this.props.handleAddTask(input);
   };
 
@@ -17,14 +18,14 @@ class List extends Component {
 
   render() {
     const { tasks } = this.props;
+    console.log(tasks);
     return (
       <Card>
         <ul>
           {tasks.map(task => (
             <Task
               handleDeleteTask={this.handleDeleteTask}
-              key={task.id}
-              id={task.id}
+              key={task._id}
               name={task.name}
             />
           ))}

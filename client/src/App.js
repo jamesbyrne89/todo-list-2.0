@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => {
     addTask: dispatch(addTask),
     markCompleted: dispatch(markCompleted),
     deleteTask: dispatch(deleteTask),
-    fetchTasks: dispatch(fetchTasks),
+    fetchTasks: () => dispatch(fetchTasks()),
     tasksLoading: dispatch(tasksLoading)
   };
 };

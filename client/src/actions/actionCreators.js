@@ -8,7 +8,7 @@ export function fetchTasks(res) {
       .then(res => {
         return dispatch({ type: 'FETCH_TASKS', payload: res.data });
       })
-      .catch(err => console.log('fetchTasks error'));
+      .catch(err => console.log('fetchTasks error', err.message));
   };
 }
 
@@ -21,11 +21,13 @@ export function tasksLoading() {
 }
 
 // Create a new task
-export function addTask(task) {
-  return function(dispatch) {
+export function addTask(dispatch) {
+  return function(task) {
+    console.log(task);
     axios
       .post('/api/tasks', task)
       .then(res => {
+        console.log(res.data);
         return dispatch({ type: 'ADD_TASK', payload: res.data });
       })
       .catch(err => console.log('addTask error'));

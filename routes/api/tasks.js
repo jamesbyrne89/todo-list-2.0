@@ -10,7 +10,6 @@ const Task = require('../../models/Task');
 // @access Public
 
 router.get('/', (req, res) => {
-  console.log(req, res);
   Task.find().then(tasks => res.json(tasks));
 });
 
