@@ -35,16 +35,16 @@ export function addTask(task) {
 // Mark task as completed
 export function toggleCompleted(id, completedState) {
   return function(dispatch) {
-    console.dir(id, completedState)
+    console.log(id, completedState, dispatch);
     axios
       .put(`/api/tasks/${id}`)
       .then(res => {
+        console.log(res.data);
         return dispatch({ type: 'TOGGLE_COMPLETED', payload: res.data });
       })
       .catch(err => console.log('toggleCompleted error'));
   };
 }
-
 
 // Delete task
 

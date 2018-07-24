@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles/styles.min.css';
 import NavBar from './components/NavBar';
 import List from './components/List';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   tasksLoading,
@@ -19,7 +19,8 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
   return {
     addTask: input => dispatch(addTask(input)),
-    toggleCompleted: (id, completedState) => dispatch(toggleCompleted(id, completedState)),
+    toggleCompleted: (id, completedState) =>
+      dispatch(toggleCompleted(id, completedState)),
     deleteTask: id => dispatch(deleteTask(id)),
     fetchTasks: () => dispatch(fetchTasks()),
     tasksLoading: dispatch(tasksLoading)
@@ -27,10 +28,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
   componentDidMount() {
     this.props.fetchTasks();
   }
@@ -50,6 +47,14 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  tasks: PropTypes.array.isRequired,
+  handleAddTask: PropTypes.func.isRequired,
+  handleDeleteTask: PropTypes.func.isRequired,
+  toggleCompleted: PropTypes.func.isRequired,
+  fetchTasks: PropTypes.func.isRequired
+};
 
 export default connect(
   mapStateToProps,
