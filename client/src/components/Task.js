@@ -3,7 +3,7 @@ import DeleteTask from './DeleteTask';
 
 const Task = props => {
   return (
-    <li className="task">
+    <li className="task" onClick={props.onClick}>
       <span className="task__name">{props.name}</span>
       <span className="task__name">
         {props.completed ? 'Completed' : 'Not yet completed'}

@@ -22,6 +22,7 @@ class List extends Component {
               id={task._id}
               name={task.name}
               completed={task.completed}
+              onClick={this.props.toggleCompleted}
             />
           ))}
         </ul>

@@ -8,7 +8,7 @@ import {
   addTask,
   deleteTask,
   fetchTasks,
-  markCompleted
+  toggleCompleted
 } from './actions/actionCreators';
 
 const mapStateToProps = store => {
@@ -18,7 +18,7 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
   return {
     addTask: input => dispatch(addTask(input)),
-    markCompleted: dispatch(markCompleted),
+    toggleCompleted: (id, completedState) => dispatch(toggleCompleted(id, completedState)),
     deleteTask: id => dispatch(deleteTask(id)),
     fetchTasks: () => dispatch(fetchTasks()),
     tasksLoading: dispatch(tasksLoading)
@@ -42,6 +42,7 @@ class App extends Component {
             tasks={this.props.tasks}
             handleAddTask={this.props.addTask}
             handleDeleteTask={this.props.deleteTask}
+            toggleCompleted={this.props.toggleCompleted}
           />
         </main>
       </div>
