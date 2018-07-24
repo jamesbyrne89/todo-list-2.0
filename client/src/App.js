@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles/styles.min.css';
 import NavBar from './components/NavBar';
 import List from './components/List';
+import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   tasksLoading,
