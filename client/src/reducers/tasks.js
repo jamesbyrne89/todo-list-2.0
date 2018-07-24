@@ -30,6 +30,16 @@ function tasks(state = initialState, { type, payload }) {
         ...state,
         tasks: tasks.filter(task => task._id !== payload)
       };
+      case 'TOGGLE_COMPLETED':
+      return {
+        ...state,
+        tasks: tasks.map(task => {
+          if (task._id === payload.id) {
+           task.completed = !task.completed
+          }
+          return task;
+        })
+      };
     default:
       return { tasks: [] };
   }

@@ -34,9 +34,27 @@ export function addTask(task) {
 
 // Mark task as completed
 export function markCompleted(id) {
-  return {
-    type: 'MARK_COMPLETED',
-    payload: id
+  return function(dispatch) {
+    console.log(id)
+    axios
+      .put(`/api/tasks/${id}`)
+      .then(res => {
+        return dispatch({ type: 'MARK_COMPLETED', payload: res.data });
+      })
+      .catch(err => console.log('markCompleted error'));
+  };
+}
+
+// Mark task as uncompleted
+export function markUncompleted(id) {
+  return function(dispatch) {
+    console.log(id)
+    axios
+      .put(`/api/tasks/${id}`)
+      .then(res => {
+        return dispatch({ type: 'MARK_UNCOMPLETED', payload: res.data });
+      })
+      .catch(err => console.log('markUncompleted error'));
   };
 }
 
@@ -44,7 +62,6 @@ export function markCompleted(id) {
 
 export function deleteTask(id) {
   return function(dispatch) {
-    console.log(id);
     axios
       .delete(`/api/tasks/${id}`)
       .then(res => {

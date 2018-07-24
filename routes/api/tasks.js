@@ -36,4 +36,16 @@ router.delete('/:id', (req, res) => {
     .catch(err => res.status(404).json({ success: false }));
 });
 
+// @route PUT api/tasks/:id
+// desc Toggle completed state of task
+// @access Public
+
+router.put('/:id', (req, res) => {
+  Task.findById(req.params.id)
+    .then(task => task.update({completed: completedState }))
+    .then(() => console.log(res.json({ success: true })))
+    .catch(err => res.status(404).json({ success: false }));
+});
+
+
 module.exports = router;
