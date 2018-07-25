@@ -50,8 +50,8 @@ class App extends Component {
 
 App.propTypes = {
   tasks: PropTypes.array.isRequired,
-  handleAddTask: PropTypes.func.isRequired,
-  handleDeleteTask: PropTypes.func.isRequired,
+  addTask: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
   toggleCompleted: PropTypes.func.isRequired,
   fetchTasks: PropTypes.func.isRequired
 };

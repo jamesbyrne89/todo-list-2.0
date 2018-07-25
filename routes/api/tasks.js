@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
   Task.findById(req.params.id)
     .then(task => task.remove())
-    .then(() => console.log(res.json({ success: true })))
+    .then(res => console.log(res.json({ success: true })))
     .catch(err => res.status(404).json({ success: false }));
 });
 
@@ -41,11 +41,24 @@ router.delete('/:id', (req, res) => {
 // @access Public
 
 router.put('/:id', (req, res) => {
-  Task.findById(req.params.id)
-    .then(task => task.update({completed: completedState }))
+  const { id } = req.params;
+  console.log({req, id});
+  Task.findOne({ _id: id }, (err, foundObject) => {
+    console.log({err, foundObject})
+    if (err) {
+      console.error(err);
+      res.status(500).send();
+      return;
+    } else {
+      if (!foundObject) {
+        res.status(404).send();
+      } else {
+        console.log(foundObject);
+      }
+    }
+  })
     .then(() => console.log(res.json({ success: true })))
     .catch(err => res.status(404).json({ success: false }));
 });
-
 
 module.exports = router;
