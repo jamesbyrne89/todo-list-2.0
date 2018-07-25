@@ -42,9 +42,9 @@ router.delete('/:id', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const { id } = req.params;
-  console.log({req, id});
-  Task.findOne({ _id: id }, (err, foundObject) => {
-    console.log({err, foundObject})
+  console.log({ req, id });
+  Task.findById(id, (err, foundObject) => {
+    console.log({ err, foundObject });
     if (err) {
       console.error(err);
       res.status(500).send();
@@ -53,7 +53,8 @@ router.put('/:id', (req, res) => {
       if (!foundObject) {
         res.status(404).send();
       } else {
-        console.log(foundObject);
+        Task.update({ ...foundObject, completed: true });
+        res.status(200).send();
       }
     }
   })
