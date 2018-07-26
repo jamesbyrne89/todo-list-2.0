@@ -4,7 +4,6 @@ const initialState = {
 };
 
 function tasks(state = initialState, { type, payload }) {
-  console.log(type, payload);
   const { tasks } = state;
   switch (type) {
     case 'FETCH_TASKS':
@@ -33,7 +32,7 @@ function tasks(state = initialState, { type, payload }) {
       return {
         ...state,
         tasks: tasks.map(task => {
-          if (task._id === payload.id) {
+          if (task._id === payload) {
             task.completed = !task.completed;
           }
           return task;

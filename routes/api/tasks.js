@@ -41,12 +41,22 @@ router.delete('/:id', (req, res) => {
 // @access Public
 
 router.put('/:id', (req, res) => {
-  const { id } = req.params;
+  Task.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true },
+    (err, task) => {
+      if (err) {
+        return res.status(404).json({ success: false });
+      }
+      return res.json(task._id);
+    }
+  );
 
-  Task.findById(id)
-    .then(task => task.set({ completed: true }))
-    .then(res => res.json({ success: true }))
-    .catch(err => res.status(404).json({ success: false }));
+  // Task.findById(id)
+  //   .then(task => console.log(task))
+  //   .then(() => res.json({ success: true }))
+  //   .catch(err => res.status(404).json({ success: false }));
   // Task.findById(id, (err, foundObject) => {
   // console.log({ err, foundObject });
   // if (err) {

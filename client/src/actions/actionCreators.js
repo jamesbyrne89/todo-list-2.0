@@ -26,7 +26,7 @@ export function addTask(task) {
     axios
       .post('/api/tasks', task)
       .then(res => {
-        return dispatch({ type: 'ADD_TASK', payload: res.data });
+        return dispatch({ type: 'ADD_TASK', payload: { id: res.data } });
       })
       .catch(err => console.log('addTask error'));
   };
@@ -36,11 +36,8 @@ export function addTask(task) {
 export function toggleCompleted(id, completedState) {
   return function(dispatch) {
     axios
-      .put(`/api/tasks/${id}`)
-      .then(res => {
-        console.log(res.data);
-        return dispatch({ type: 'TOGGLE_COMPLETED', payload: res.data });
-      })
+      .put(`/api/tasks/${id}`, { completed: completedState })
+      .then(res => dispatch({ type: 'TOGGLE_COMPLETED', payload: res.data }))
       .catch(err => console.log('toggleCompleted error'));
   };
 }
