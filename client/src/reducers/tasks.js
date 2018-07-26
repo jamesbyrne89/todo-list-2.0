@@ -20,7 +20,6 @@ function tasks(state = initialState, { type, payload }) {
       };
     }
     case 'ADD_TASK':
-      console.log(payload);
       return {
         ...state,
         tasks: [...tasks, payload]
@@ -30,12 +29,12 @@ function tasks(state = initialState, { type, payload }) {
         ...state,
         tasks: tasks.filter(task => task._id !== payload)
       };
-      case 'TOGGLE_COMPLETED':
+    case 'TOGGLE_COMPLETED':
       return {
         ...state,
         tasks: tasks.map(task => {
           if (task._id === payload.id) {
-           task.completed = !task.completed
+            task.completed = !task.completed;
           }
           return task;
         })

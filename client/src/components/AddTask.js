@@ -42,7 +42,9 @@ class AddTask extends Component {
         <Input
           s={6}
           className="add-task-input"
+          onChange={this.handleInput}
           onKeyUp={this.handleInput}
+          value={this.state.input}
           autoFocus
         />
       </Modal>

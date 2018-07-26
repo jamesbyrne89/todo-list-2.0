@@ -35,7 +35,6 @@ export function addTask(task) {
 // Mark task as completed
 export function toggleCompleted(id, completedState) {
   return function(dispatch) {
-    console.log(id, completedState, dispatch);
     axios
       .put(`/api/tasks/${id}`)
       .then(res => {
