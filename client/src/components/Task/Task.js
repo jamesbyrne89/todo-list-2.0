@@ -8,9 +8,13 @@ const Task = props => {
       onClick={() => props.onClick(props.id, !props.completed)}
     >
       <span className="task__name">{props.name}</span>
-      <span className="task__name">
-        {props.completed ? 'Completed' : 'Not yet completed'}
-      </span>
+      <span
+        className={
+          props.completed
+            ? 'task__strikethrough completed'
+            : 'task__strikethrough'
+        }
+      />
       <DeleteTask onClick={() => props.handleDeleteTask(props.id)} />
     </li>
   );
