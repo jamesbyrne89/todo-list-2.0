@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card } from 'react-materialize';
-import Task from './Task';
-import AddTask from './AddTask';
+import Task from '../Task/Task';
+import AddTask from '../AddTask/AddTask';
 
 class List extends Component {
   constructor() {

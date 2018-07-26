@@ -1,5 +1,5 @@
 import React from 'react';
-import DeleteTask from './DeleteTask';
+import DeleteTask from '../DeleteTask';
 
 const Task = props => {
   return (

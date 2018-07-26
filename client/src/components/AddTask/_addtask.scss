@@ -1,0 +1,28 @@
+.new-task-modal {
+    max-width: 600px;
+}
+
+input.add-task-input:focus {
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+.input-field {
+    display: block;
+    &::after {
+        content: '';
+        display: block;
+        position: relative;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, #511ea0, #fed8e9);
+    }
+}
+
+.add-task-btn {
+    float: right;
+    margin: -40px 50px;
+    background: #222;
+}

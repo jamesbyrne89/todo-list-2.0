@@ -1,0 +1,13 @@
+.nav {
+    background: white;
+    color: #222;
+    font-family: var(--serif);
+    padding: 0.5em 1em;
+    height: auto;
+    .brand-logo {
+        position: relative;
+    }
+    a {
+        color: inherit;
+    }
+}
