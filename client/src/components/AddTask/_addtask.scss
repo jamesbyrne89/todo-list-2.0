@@ -1,5 +1,8 @@
 .new-task-modal {
     max-width: 600px;
+    h4 {
+        font-weight: bold;
+    }
 }
 
 input.add-task-input:focus {
@@ -25,4 +28,7 @@ input.add-task-input:focus {
     float: right;
     margin: -40px 50px;
     background: #222;
+    &:focus, &:active, &:hover{ 
+        background: black; 
+      }
 }

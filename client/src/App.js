@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <div className="app-container">
-        <NavBar />
+        <NavBar title="Todo List"/>
         <main className="list-container">
           <List
             tasks={this.props.tasks}

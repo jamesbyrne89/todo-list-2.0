@@ -13,6 +13,13 @@
     justify-content: space-between;
     -webkit-box-align: center;
     align-items: center;
+    transition: -webkit-transform 0.3s var(--ease-in-out-quint);
+    transition: transform 0.3s var(--ease-in-out-quint);
+    transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
+    &:hover {
+                -webkit-transform: scale(1.01);
+                        transform: scale(1.01);
+    }
 }
 
 .task__strikethrough {
@@ -27,9 +34,9 @@
     -webkit-transform-origin: 0 0;
             transform-origin: 0 0;
     background: white;
-    transition: -webkit-transform 0.3s ease-out;
-    transition: transform 0.3s ease-out;
-    transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+    transition: -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
     &.completed {
         -webkit-transform: scaleX(1);
         transform: scaleX(1);
