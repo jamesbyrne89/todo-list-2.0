@@ -23,11 +23,24 @@
   transform: scale(1.01);
 }
 
+.task.completed {
+  background: #fff;
+  color: #ccc;
+}
+
+.task.completed .task__strikethrough.completed {
+  background: #ccc;
+}
+
+.task__name {
+  position: relative;
+}
+
 .task__strikethrough {
   position: absolute;
-  left: 1em;
+  left: 0;
   right: auto;
-  width: 80%;
+  width: 100%;
   top: 50%;
   height: 2px;
   -webkit-transform: scaleX(0);

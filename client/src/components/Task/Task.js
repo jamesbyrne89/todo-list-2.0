@@ -5,20 +5,24 @@ import DeleteTask from '../DeleteTask';
 const Task = props => {
   return (
     <li
-      className="task"
+      className={props.completed ? 'task completed' : 'task'}
       onClick={() => props.onClick(props.id, !props.completed)}
     >
-      <span className="task__name">{props.name}</span>
-      <span
-        className={
-          props.completed
-            ? 'task__strikethrough completed'
-            : 'task__strikethrough'
-        }
-      />
+      <div>
+        <CompleteTask onClick={() => props.handleDeleteTask(props.id)} />
+        <span className="task__name">
+          {props.name}
+          <span
+            className={
+              props.completed
+                ? 'task__strikethrough completed'
+                : 'task__strikethrough'
+            }
+          />
+        </span>
+      </div>
       <span>
-      <CompleteTask onClick={() => props.handleDeleteTask(props.id)} />
-      <DeleteTask onClick={() => props.handleDeleteTask(props.id)} />
+        <DeleteTask onClick={() => props.handleDeleteTask(props.id)} />
       </span>
     </li>
   );

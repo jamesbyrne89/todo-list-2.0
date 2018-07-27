@@ -17,16 +17,28 @@
     transition: transform 0.3s var(--ease-in-out-quint);
     transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
     &:hover {
-                -webkit-transform: scale(1.01);
-                        transform: scale(1.01);
+            -webkit-transform: scale(1.01);
+                    transform: scale(1.01);
     }
+    &.completed {
+        background: #fff;
+        color: #ccc;
+        .task__strikethrough.completed {
+            background: #ccc;
+        }
+    }
+}
+
+.task__name {
+    position: relative;
+    text-align: left;
 }
 
 .task__strikethrough {
     position: absolute;
-    left: 1em;
+    left: 0;
     right: auto;
-    width: 80%;
+    width: 100%;
     top: 50%;
     height: 2px;
     -webkit-transform: scaleX(0);
