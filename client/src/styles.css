@@ -5,7 +5,7 @@
   position: relative;
   background: var(--purple-gradient);
   font-weight: 300;
-  padding: 0.5em 1em;
+  padding: 0.5em;
   border-radius: 3px;
   display: -webkit-box;
   display: flex;
@@ -16,6 +16,9 @@
   transition: -webkit-transform 0.3s var(--ease-in-out-quint);
   transition: transform 0.3s var(--ease-in-out-quint);
   transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
+  transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
+  transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
+  transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
 }
 
 .task:hover {
@@ -25,15 +28,23 @@
 
 .task.completed {
   background: #fff;
-  color: #ccc;
+  color: var(--grey);
 }
 
-.task.completed .task__strikethrough.completed {
-  background: #ccc;
+.task.completed .task__strikethrough {
+  background: var(--grey);
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.task.completed path {
+  fill: var(--grey);
 }
 
 .task__name {
   position: relative;
+  text-align: left;
+  padding: 0 0.5em;
 }
 
 .task__strikethrough {
@@ -51,11 +62,9 @@
   transition: -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.task__strikethrough.completed {
-  -webkit-transform: scaleX(1);
-  transform: scaleX(1);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .nav {
@@ -92,6 +101,18 @@
 
 .new-task-modal h4 {
   font-weight: bold;
+  font-family: var(--sans-serif);
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 992px) {
+  .new-task-modal {
+    width: 90%;
+  }
+}
+
+.modal-overlay {
+  opacity: 0.75 !important;
 }
 
 input.add-task-input:focus {
@@ -128,6 +149,7 @@ input.add-task-input:focus {
   --serif: 'Playfair Display', georgia, serif;
   --sans-serif: 'Lato', helvetica, system-ui;
   --purple-gradient: linear-gradient(150deg, #511ea0, #fed8e9);
+  --grey: #e3dee4;
   --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
   --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
   --ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);

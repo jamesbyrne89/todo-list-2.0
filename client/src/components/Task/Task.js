@@ -12,13 +12,7 @@ const Task = props => {
         <CompleteTask onClick={() => props.handleDeleteTask(props.id)} />
         <span className="task__name">
           {props.name}
-          <span
-            className={
-              props.completed
-                ? 'task__strikethrough completed'
-                : 'task__strikethrough'
-            }
-          />
+          <span className="task__strikethrough" />
         </span>
       </div>
       <span>

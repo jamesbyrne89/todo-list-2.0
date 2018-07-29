@@ -2,7 +2,16 @@
     max-width: 600px;
     h4 {
         font-weight: bold;
+        font-family: var(--sans-serif);
+        font-size: 1.5rem;
     }
+    @media only screen and (max-width: 992px) {
+        width: 90%;
+    }
+}
+
+.modal-overlay {
+    opacity: 0.75 !important;
 }
 
 input.add-task-input:focus {
@@ -28,7 +37,9 @@ input.add-task-input:focus {
     float: right;
     margin: -40px 50px;
     background: #222;
-    &:focus, &:active, &:hover{ 
-        background: black; 
-      }
+    &:focus,
+    &:active,
+    &:hover {
+        background: black;
+    }
 }

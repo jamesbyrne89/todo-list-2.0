@@ -4,6 +4,7 @@ const initialState = {
 };
 
 function tasks(state = initialState, { type, payload }) {
+  console.log(payload);
   const { tasks } = state;
   switch (type) {
     case 'FETCH_TASKS':
@@ -15,7 +16,7 @@ function tasks(state = initialState, { type, payload }) {
     case 'TASKS_LOADING': {
       return {
         ...state,
-        loading: payload.loading
+        loading: payload
       };
     }
     case 'ADD_TASK':

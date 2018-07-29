@@ -1,56 +1,70 @@
 .task {
-    margin: 1rem auto 0;
-    color: #fff;
-    font-weight: 400;
-    position: relative;
-    background: var(--purple-gradient);
-    font-weight: 300;
-    padding: 0.5em 1em;
-    border-radius: 3px;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    align-items: center;
-    transition: -webkit-transform 0.3s var(--ease-in-out-quint);
-    transition: transform 0.3s var(--ease-in-out-quint);
-    transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
-    &:hover {
-            -webkit-transform: scale(1.01);
-                    transform: scale(1.01);
+  margin: 1rem auto 0;
+  color: #fff;
+  font-weight: 400;
+  position: relative;
+  background: var(--purple-gradient);
+  font-weight: 300;
+  padding: 0.5em;
+  border-radius: 3px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  transition: -webkit-transform 0.3s var(--ease-in-out-quint);
+  transition: transform 0.3s var(--ease-in-out-quint);
+  transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
+  transition: transform 0.3s var(--ease-in-out-quint),
+    -webkit-transform 0.3s var(--ease-in-out-quint);
+  transition: transform 0.3s var(--ease-in-out-quint),
+    -webkit-transform 0.3s var(--ease-in-out-quint);
+  transition: transform 0.3s var(--ease-in-out-quint),
+    -webkit-transform 0.3s var(--ease-in-out-quint);
+  &:hover {
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01);
+  }
+  &.completed {
+    background: #fff;
+    color: var(--grey);
+    .task__strikethrough {
+      background: var(--grey);
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
     }
-    &.completed {
-        background: #fff;
-        color: #ccc;
-        .task__strikethrough.completed {
-            background: #ccc;
-        }
+    path {
+      fill: var(--grey);
     }
+  }
 }
 
 .task__name {
-    position: relative;
-    text-align: left;
+  position: relative;
+  text-align: left;
+  padding: 0 0.5em;
 }
 
 .task__strikethrough {
-    position: absolute;
-    left: 0;
-    right: auto;
-    width: 100%;
-    top: 50%;
-    height: 2px;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    -webkit-transform-origin: 0 0;
-            transform-origin: 0 0;
-    background: white;
-    transition: -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-    transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-    transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-    &.completed {
-        -webkit-transform: scaleX(1);
-        transform: scaleX(1);
-    }
+  position: absolute;
+  left: 0;
+  right: auto;
+  width: 100%;
+  top: 50%;
+  height: 2px;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  background: white;
+  transition: -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+    -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+    -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+    -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }

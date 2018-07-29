@@ -23,10 +23,12 @@ export function tasksLoading() {
 // Create a new task
 export function addTask(task) {
   return function(dispatch) {
+    dispatch({ type: 'TASKS_LOADING', payload: true });
     axios
       .post('/api/tasks', task)
       .then(res => {
-        return dispatch({ type: 'ADD_TASK', payload: { id: res.data } });
+        dispatch({ type: 'ADD_TASK', payload: res.data });
+        dispatch({ type: 'TASKS_LOADING', payload: false });
       })
       .catch(err => console.log('addTask error'));
   };
