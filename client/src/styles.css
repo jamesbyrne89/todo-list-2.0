@@ -19,6 +19,7 @@
   transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
   transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
   transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
+  transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
 }
 
 .task:hover {
@@ -65,6 +66,25 @@
   transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 0.3s ease-out;
 }
 
 .nav {

@@ -4,7 +4,6 @@ const initialState = {
 };
 
 function tasks(state = initialState, { type, payload }) {
-  console.log(payload);
   const { tasks } = state;
   switch (type) {
     case 'FETCH_TASKS':
