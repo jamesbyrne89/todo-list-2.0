@@ -13,13 +13,7 @@
   justify-content: space-between;
   -webkit-box-align: center;
   align-items: center;
-  transition: -webkit-transform 0.3s var(--ease-in-out-quint);
-  transition: transform 0.3s var(--ease-in-out-quint);
-  transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
-  transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
-  transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
-  transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
-  transition: transform 0.3s var(--ease-in-out-quint), -webkit-transform 0.3s var(--ease-in-out-quint);
+  transition: all 0.3s var(--ease-in-out-quint);
 }
 
 .task:hover {
@@ -62,6 +56,7 @@
   background: white;
   transition: -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
@@ -119,6 +114,12 @@
 
 .list-container ul {
   margin-top: 2rem;
+}
+
+.error-message {
+  display: block;
+  font-weight: bold;
+  margin: 2rem 0;
 }
 
 .new-task-modal {

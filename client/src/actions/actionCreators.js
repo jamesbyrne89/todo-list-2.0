@@ -4,11 +4,12 @@ import axios from 'axios';
 export function fetchTasks() {
   return function(dispatch) {
     axios
-      .get('/api/tasks')
+      .get('/api/tass')
       .then(res => {
-        return dispatch({ type: 'FETCH_TASKS', payload: res.data });
+        dispatch({ type: 'HAS_ERROR', payload: false });
+        dispatch({ type: 'FETCH_TASKS', payload: res.data });
       })
-      .catch(err => console.log('fetchTasks error', err.message));
+      .catch(err => dispatch({ type: 'HAS_ERROR', payload: true }));
   };
 }
 
@@ -27,10 +28,11 @@ export function addTask(task) {
     axios
       .post('/api/tasks', task)
       .then(res => {
+        dispatch({ type: 'HAS_ERROR', payload: false });
         dispatch({ type: 'ADD_TASK', payload: res.data });
         dispatch({ type: 'TASKS_LOADING', payload: false });
       })
-      .catch(err => console.log('addTask error'));
+      .catch(err => dispatch({ type: 'HAS_ERROR', payload: true }));
   };
 }
 
@@ -39,8 +41,11 @@ export function toggleCompleted(id, completedState) {
   return function(dispatch) {
     axios
       .put(`/api/tasks/${id}`, { completed: completedState })
-      .then(res => dispatch({ type: 'TOGGLE_COMPLETED', payload: res.data }))
-      .catch(err => console.log('toggleCompleted error'));
+      .then(res => {
+        dispatch({ type: 'HAS_ERROR', payload: false });
+        dispatch({ type: 'TOGGLE_COMPLETED', payload: res.data });
+      })
+      .catch(err => dispatch({ type: 'HAS_ERROR', payload: true }));
   };
 }
 
@@ -56,6 +61,6 @@ export function deleteTask(id) {
           payload: id
         });
       })
-      .catch(err => console.log('delTask error'));
+      .catch(err => dispatch({ type: 'HAS_ERROR', payload: true }));
   };
 }

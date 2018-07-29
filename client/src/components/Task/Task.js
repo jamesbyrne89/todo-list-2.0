@@ -6,7 +6,7 @@ const Task = props => {
   return (
     <li
       className={props.completed ? 'task completed' : 'task'}
-      onClick={() => props.onClick(props.id, !props.completed)}
+      onClick={e => props.onClick(props.id, !props.completed)}
     >
       <div>
         <CompleteTask onClick={() => props.handleDeleteTask(props.id)} />

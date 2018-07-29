@@ -1,6 +1,7 @@
 const initialState = {
   tasks: [],
-  loading: false
+  loading: false,
+  error: false
 };
 
 function tasks(state = initialState, { type, payload }) {
@@ -16,6 +17,12 @@ function tasks(state = initialState, { type, payload }) {
       return {
         ...state,
         loading: payload
+      };
+    }
+    case 'HAS_ERROR': {
+      return {
+        ...state,
+        error: payload
       };
     }
     case 'ADD_TASK':
@@ -39,7 +46,7 @@ function tasks(state = initialState, { type, payload }) {
         })
       };
     default:
-      return { tasks: [] };
+      return state;
   }
 }
 

@@ -34,13 +34,14 @@ class App extends Component {
   render() {
     return (
       <div className="app-container">
-        <NavBar title="Todo List"/>
+        <NavBar title="Todo List" />
         <main className="list-container">
           <List
             tasks={this.props.tasks}
             handleAddTask={this.props.addTask}
             handleDeleteTask={this.props.deleteTask}
             toggleCompleted={this.props.toggleCompleted}
+            error={this.props.error}
           />
         </main>
       </div>
