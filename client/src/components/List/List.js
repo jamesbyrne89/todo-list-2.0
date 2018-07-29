@@ -14,6 +14,7 @@ class List extends Component {
     const { tasks } = this.props;
     return (
       <Card>
+        <AddTask handleAddNewTask={this.props.handleAddTask} />
         <ul>
           <TransitionGroup>
             {tasks.map(task => (
@@ -30,8 +31,6 @@ class List extends Component {
             ))}
           </TransitionGroup>
         </ul>
-
-        <AddTask handleAddNewTask={this.props.handleAddTask} />
       </Card>
     );
   }

@@ -111,8 +111,14 @@
   font-family: var(--sans-serif);
 }
 
+@media only screen and (max-width: 667px) {
+  .list-container {
+    margin: 36px auto;
+  }
+}
+
 .list-container ul {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .new-task-modal {
@@ -156,8 +162,9 @@ input.add-task-input:focus {
 }
 
 .add-task-btn {
-  float: right;
-  margin: -40px 50px;
+  position: absolute;
+  top: -28px;
+  right: 1.5em;
   background: #222;
 }
 
@@ -202,4 +209,8 @@ input.add-task-input:focus {
   border: none;
   color: #fff;
   margin: 0 0 0 4px;
+}
+
+.task-btn:focus, .task-btn:hover {
+  background: none;
 }

@@ -1,45 +1,46 @@
 .new-task-modal {
-    max-width: 600px;
-    h4 {
-        font-weight: bold;
-        font-family: var(--sans-serif);
-        font-size: 1.5rem;
-    }
-    @media only screen and (max-width: 992px) {
-        width: 90%;
-    }
+  max-width: 600px;
+  h4 {
+    font-weight: bold;
+    font-family: var(--sans-serif);
+    font-size: 1.5rem;
+  }
+  @media only screen and (max-width: 992px) {
+    width: 90%;
+  }
 }
 
 .modal-overlay {
-    opacity: 0.75 !important;
+  opacity: 0.75 !important;
 }
 
 input.add-task-input:focus {
-    border-bottom: none !important;
-    box-shadow: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
 
 .input-field {
+  display: block;
+  &::after {
+    content: '';
     display: block;
-    &::after {
-        content: '';
-        display: block;
-        position: relative;
-        bottom: 20px;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(90deg, #511ea0, #fed8e9);
-    }
+    position: relative;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #511ea0, #fed8e9);
+  }
 }
 
 .add-task-btn {
-    float: right;
-    margin: -40px 50px;
-    background: #222;
-    &:focus,
-    &:active,
-    &:hover {
-        background: black;
-    }
+  position: absolute;
+  top: -28px;
+  right: 1.5em;
+  background: #222;
+  &:focus,
+  &:active,
+  &:hover {
+    background: black;
+  }
 }
