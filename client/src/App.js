@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './styles.min.css';
 import NavBar from './components/NavBar/NavBar';
 import List from './components/List/List';
+import Task from './components/Task/Task';
+import AddTask from './components/AddTask/AddTask';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
@@ -36,13 +39,36 @@ class App extends Component {
       <div className="app-container">
         <NavBar title="Todo List" />
         <main className="list-container">
-          <List
-            tasks={this.props.tasks}
-            handleAddTask={this.props.addTask}
-            handleDeleteTask={this.props.deleteTask}
-            toggleCompleted={this.props.toggleCompleted}
-            error={this.props.error}
-          />
+          <List>
+            <AddTask handleAddNewTask={this.props.addTask} />
+            {this.props.error ? (
+              <span className="error-message">
+                There was an error fetching the tasks. Please try refreshing
+                your page.
+              </span>
+            ) : (
+              <ul>
+                <TransitionGroup>
+                  {this.props.tasks.map(task => (
+                    <CSSTransition
+                      key={task._id}
+                      timeout={500}
+                      classNames="fade"
+                    >
+                      <Task
+                        handleDeleteTask={this.props.deleteTask}
+                        key={task._id}
+                        id={task._id}
+                        name={task.name}
+                        completed={task.completed}
+                        onClick={this.props.toggleCompleted}
+                      />
+                    </CSSTransition>
+                  ))}
+                </TransitionGroup>
+              </ul>
+            )}
+          </List>
         </main>
       </div>
     );
@@ -54,7 +80,8 @@ App.propTypes = {
   addTask: PropTypes.func.isRequired,
   deleteTask: PropTypes.func.isRequired,
   toggleCompleted: PropTypes.func.isRequired,
-  fetchTasks: PropTypes.func.isRequired
+  fetchTasks: PropTypes.func.isRequired,
+  error: PropTypes.bool.isRequired
 };
 
 export default connect(

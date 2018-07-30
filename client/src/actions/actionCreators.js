@@ -4,7 +4,7 @@ import axios from 'axios';
 export function fetchTasks() {
   return function(dispatch) {
     axios
-      .get('/api/tass')
+      .get('/api/tasks')
       .then(res => {
         dispatch({ type: 'HAS_ERROR', payload: false });
         dispatch({ type: 'FETCH_TASKS', payload: res.data });
