@@ -52,28 +52,6 @@ router.put('/:id', (req, res) => {
       return res.json(task._id);
     }
   );
-
-  // Task.findById(id)
-  //   .then(task => console.log(task))
-  //   .then(() => res.json({ success: true }))
-  //   .catch(err => res.status(404).json({ success: false }));
-  // Task.findById(id, (err, foundObject) => {
-  // console.log({ err, foundObject });
-  // if (err) {
-  //   console.error(err);
-  //   res.status(500).send();
-  //   return;
-  // } else {
-  //   if (!foundObject) {
-  //     res.status(404).send();
-  //   } else {
-  //     Task.update({ ...foundObject, completed: true });
-  //     res.status(200).send();
-  //   }
-  // }
-  // })
-  //   .then(() => console.log(res.json({ success: true })))
-  //   .catch(err => res.status(404).json({ success: false }));
 });
 
 module.exports = router;
