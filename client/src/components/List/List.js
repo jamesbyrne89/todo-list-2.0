@@ -8,7 +8,6 @@ class List extends Component {
   }
 
   render() {
-    const { tasks } = this.props;
     return <Card>{this.props.children}</Card>;
   }
 }

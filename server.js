@@ -24,6 +24,10 @@ mongoose
 // Use routes
 app.use('/api/tasks', tasks);
 
+app.get('/signin', (req, res) => {
+  return res.json('Sign in here')
+})
+
 //Serve static assets if in production environment
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
