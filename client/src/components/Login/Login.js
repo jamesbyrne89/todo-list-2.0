@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, NavBar, Input } from 'react-materialize';
+import { Button, Input, Card } from 'react-materialize';
+import NavBar from '../NavBar/NavBar';
 
 class Login extends Component {
   constructor() {
@@ -14,9 +15,12 @@ class Login extends Component {
   render() {
     return (
       <div className="app-container">
-        {/* <NavBar title="Todo List" /> */}
-        <Input s={6} className="signin-input" autoFocus />
-        <Input s={6} className="signin-input" autoFocus />
+        <NavBar title="Todo List" />
+        <Card className="login-container">
+          <Input s={6} label="Email" className="signin-input" autoFocus />
+          <Input s={6} label="Password" className="signin-input" />
+          <Button className="login-btn">Log in</Button>
+        </Card>
       </div>
     );
   }

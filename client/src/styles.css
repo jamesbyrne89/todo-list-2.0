@@ -99,6 +99,18 @@
   color: inherit;
 }
 
+.login-container {
+  margin: 100px auto auto;
+  width: 90%;
+  max-width: 700px;
+}
+
+.login-container .card-content {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
 .list-container {
   margin: 100px auto;
   max-width: 600px;
@@ -176,6 +188,7 @@ input.add-task-input:focus {
 :root {
   --serif: 'Playfair Display', georgia, serif;
   --sans-serif: 'Lato', helvetica, system-ui;
+  --purple: #511ea0;
   --purple-gradient: linear-gradient(150deg, #511ea0, #fed8e9);
   --grey: #e3dee4;
   --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
@@ -199,10 +212,17 @@ input.add-task-input:focus {
 }
 
 .app-container {
-  min-height: calc(100vh - 20px);
+  min-height: 100vh;
   background: var(--purple-gradient);
   font-family: var(--sans-serif);
   box-sizing: border-box;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
 }
 
 .task-btn {
@@ -214,4 +234,31 @@ input.add-task-input:focus {
 
 .task-btn:focus, .task-btn:hover {
   background: none;
+}
+
+.login-btn {
+  font-weight: bold;
+  color: #fff;
+  background: #000;
+  float: right;
+}
+
+.login-btn:focus, .login-btn:hover {
+  background: #000;
+}
+
+input:not([type]):focus:not([readonly]) + label,
+input[type='text']:focus:not([readonly]) + label,
+input[type='password']:focus:not([readonly]) + label,
+input[type='email']:focus:not([readonly]) + label,
+input[type='url']:focus:not([readonly]) + label,
+input[type='time']:focus:not([readonly]) + label,
+input[type='date']:focus:not([readonly]) + label,
+input[type='datetime']:focus:not([readonly]) + label,
+input[type='datetime-local']:focus:not([readonly]) + label,
+input[type='tel']:focus:not([readonly]) + label,
+input[type='number']:focus:not([readonly]) + label,
+input[type='search']:focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #000;
 }
