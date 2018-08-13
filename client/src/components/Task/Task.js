@@ -1,6 +1,7 @@
 import React from 'react';
 import CompleteTask from '../CompleteTask';
 import DeleteTask from '../DeleteTask';
+import propTypes from 'prop-types';
 
 const Task = props => {
   return (
@@ -20,6 +21,12 @@ const Task = props => {
       </span>
     </li>
   );
+};
+
+Task.propTypes = {
+  name: propTypes.string.isRequired,
+  completed: propTypes.bool.isRequired,
+  handleDeleteTask: propTypes.func.isRequired
 };
 
 export default Task;

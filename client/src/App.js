@@ -5,6 +5,7 @@ import List from './components/List/List';
 import Task from './components/Task/Task';
 import AddTask from './components/AddTask/AddTask';
 import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -33,10 +34,10 @@ const mapDispatchToProps = dispatch => {
 
 class App extends Component {
   componentDidMount() {
-    // this.props.fetchTasks();
+    this.props.fetchTasks();
   }
   render() {
-    return <Login />;
+    return <Register />;
     // <div className="app-container">
     //   <NavBar title="Todo List" />
     //   <main className="list-container">
