@@ -9,13 +9,7 @@ import Register from './components/Register/Register';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  tasksLoading,
-  addTask,
-  deleteTask,
-  fetchTasks,
-  toggleCompleted
-} from './actions/actionCreators';
+import { taskActions } from './actions/actionCreators';
 
 const mapStateToProps = store => {
   return store;
@@ -23,12 +17,12 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addTask: input => dispatch(addTask(input)),
+    addTask: input => dispatch(taskActions.add(input)),
     toggleCompleted: (id, completedState) =>
-      dispatch(toggleCompleted(id, completedState)),
-    deleteTask: id => dispatch(deleteTask(id)),
-    fetchTasks: () => dispatch(fetchTasks()),
-    tasksLoading: dispatch(tasksLoading)
+      dispatch(taskActions.toggleCompleted(id, completedState)),
+    deleteTask: id => dispatch(taskActions.delete(id)),
+    fetchTasks: () => dispatch(taskActions.fetch()),
+    tasksLoading: dispatch(taskActions.isLoading)
   };
 };
 

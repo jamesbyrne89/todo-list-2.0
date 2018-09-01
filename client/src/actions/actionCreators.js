@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 // Fetch tasks
-export function fetchTasks() {
-  return function(dispatch) {
+
+export const taskActions = {
+  fetch: () => dispatch => {
     axios
       .get('/api/tasks')
       .then(res => {
@@ -10,20 +11,16 @@ export function fetchTasks() {
         dispatch({ type: 'FETCH_TASKS', payload: res.data });
       })
       .catch(err => dispatch({ type: 'HAS_ERROR', payload: true }));
-  };
-}
-
-// Handle loading state
-export function tasksLoading() {
-  return {
-    type: 'TASKS_LOADING',
-    payload: { loading: true }
-  };
-}
-
-// Create a new task
-export function addTask(task) {
-  return function(dispatch) {
+  },
+  // Handle loading state
+  isLoading: () => {
+    return {
+      type: 'TASKS_LOADING',
+      payload: { loading: true }
+    };
+  },
+  // Create a new task
+  add: task => dispatch => {
     dispatch({ type: 'TASKS_LOADING', payload: true });
     axios
       .post('/api/tasks', task)
@@ -33,12 +30,9 @@ export function addTask(task) {
         dispatch({ type: 'TASKS_LOADING', payload: false });
       })
       .catch(err => dispatch({ type: 'HAS_ERROR', payload: true }));
-  };
-}
-
-// Mark task as completed
-export function toggleCompleted(id, completedState) {
-  return function(dispatch) {
+  },
+  // Mark task as completed
+  toggleCompleted: (id, completedState) => dispatch => {
     axios
       .put(`/api/tasks/${id}`, { completed: completedState })
       .then(res => {
@@ -46,13 +40,9 @@ export function toggleCompleted(id, completedState) {
         dispatch({ type: 'TOGGLE_COMPLETED', payload: res.data });
       })
       .catch(err => dispatch({ type: 'HAS_ERROR', payload: true }));
-  };
-}
-
-// Delete task
-
-export function deleteTask(id) {
-  return function(dispatch) {
+  },
+  // Delete task
+  delete: id => dispatch => {
     axios
       .delete(`/api/tasks/${id}`)
       .then(res => {
@@ -62,5 +52,5 @@ export function deleteTask(id) {
         });
       })
       .catch(err => dispatch({ type: 'HAS_ERROR', payload: true }));
-  };
-}
+  }
+};
