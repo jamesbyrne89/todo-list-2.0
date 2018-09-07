@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles.min.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import List from './components/List/List';
 import Task from './components/Task/Task';
@@ -31,8 +32,15 @@ class App extends Component {
     this.props.fetchTasks();
   }
   render() {
-    return <Register />;
-    // <div className="app-container">
+    return (
+      <Router>
+        <div className="app-container">
+          <Route exact path="/" component={Login} />
+          <Route path="/register" component={Register} />
+        </div>
+      </Router>
+    );
+
     //   <NavBar title="Todo List" />
     //   <main className="list-container">
     //     <List>
@@ -66,7 +74,6 @@ class App extends Component {
     //       )}
     //     </List>
     //   </main>
-    // </div>
     // );
   }
 }

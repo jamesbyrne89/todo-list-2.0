@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Input, Card } from 'react-materialize';
 import NavBar from '../NavBar/NavBar';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   constructor() {
@@ -19,6 +20,7 @@ class Login extends Component {
         <Card className="login-container">
           <Input s={6} label="Email" className="signin-input" autoFocus />
           <Input s={6} label="Password" className="signin-input" />
+          <Link to="/register">Don't have an account yet? Sign up here.</Link>
           <Button className="login-btn">Log in</Button>
         </Card>
       </div>
