@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './styles.min.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import List from './components/List/List';
 import Task from './components/Task/Task';
@@ -27,6 +27,19 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const ProtectedRoute = ({
+  component: Component,
+  authenticated,
+  ...otherProps
+}) => (
+  <Route
+    {...otherProps}
+    render={props =>
+      authenticated ? <Component {...props} /> : <Redirect to="/login" />
+    }
+  />
+);
+
 class App extends Component {
   componentDidMount() {
     this.props.fetchTasks();
@@ -35,8 +48,9 @@ class App extends Component {
     return (
       <Router>
         <div className="app-container">
-          <Route exact path="/" component={Login} />
+          <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <ProtectedRoute exact path="/" authenticated component={List} />
         </div>
       </Router>
     );

@@ -54,3 +54,7 @@ export const taskActions = {
       .catch(err => dispatch({ type: 'HAS_ERROR', payload: true }));
   }
 };
+
+export const authActions = {
+  
+}
