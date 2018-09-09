@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Button, Input, Card } from 'react-materialize';
-import NavBar from '../NavBar/NavBar';
 import { Link } from 'react-router-dom';
 
 class Login extends Component {
   constructor() {
     super();
+    this.emailRef = React.createRef();
     this.state = {
       credentials: {
         email: '',
@@ -13,15 +13,42 @@ class Login extends Component {
       }
     };
   }
+
+  handleInput = e => {
+    const { name, value } = e.target;
+    this.setState({ credentials: { [name]: value } });
+  };
+
+  componentDidMount() {
+    this.emailRef.current.input.focus();
+  }
+
   render() {
     return (
       <div className="app-container">
-        <NavBar title="Todo List" />
         <Card className="login-container">
-          <Input s={6} label="Email" className="signin-input" autoFocus />
-          <Input s={6} label="Password" className="signin-input" />
-          <Link to="/register">Don't have an account yet? Sign up here.</Link>
-          <Button className="login-btn">Log in</Button>
+          <Input
+            s={6}
+            label="Email"
+            name="email"
+            type="email"
+            className="signin-input"
+            ref={this.emailRef}
+            onChange={this.handleInput}
+            autoFocus
+          />
+          <Input
+            s={6}
+            label="Password"
+            name="password"
+            type="password"
+            className="signin-input"
+            onChange={this.handleInput}
+          />
+          <footer className="card-footer">
+            <Link to="/register">Don't have an account yet? Sign up here.</Link>
+            <Button className="login-btn">Log in</Button>
+          </footer>
         </Card>
       </div>
     );

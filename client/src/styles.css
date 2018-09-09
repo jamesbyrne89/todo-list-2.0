@@ -111,6 +111,19 @@
   overflow: hidden;
 }
 
+.login-container .card-footer {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: end;
+  align-items: flex-end;
+}
+
+.login-container .card-footer a {
+  color: var(--purple);
+}
+
 .list-container {
   margin: 100px auto;
   max-width: 600px;
@@ -240,7 +253,6 @@ input.add-task-input:focus {
   font-weight: bold;
   color: #fff;
   background: #000;
-  float: right;
 }
 
 .login-btn:focus, .login-btn:hover {

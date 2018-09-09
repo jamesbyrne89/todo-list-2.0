@@ -1,6 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './styles.min.css';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import List from './components/List/List';
 import Task from './components/Task/Task';
@@ -47,11 +52,16 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="app-container">
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <ProtectedRoute exact path="/" authenticated component={List} />
-        </div>
+        <Fragment>
+          <NavBar title="Todo List" />
+          <Switch>
+            <div className="app-container">
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <ProtectedRoute exact path="/" component={List} />
+            </div>
+          </Switch>
+        </Fragment>
       </Router>
     );
 
