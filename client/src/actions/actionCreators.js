@@ -56,5 +56,6 @@ export const taskActions = {
 };
 
 export const authActions = {
-  
-}
+  login: () => ({ type: 'LOGIN', payload: true }),
+  logout: () => ({ type: 'LOGOUT', payload: false })
+};
