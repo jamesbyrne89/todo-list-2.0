@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const validator = require('validator');
+const bcrypt = require('bcrypt-nodejs');
 
 const UserSchema = new Schema({
   firstName: {
@@ -26,5 +27,13 @@ const UserSchema = new Schema({
   joined: { type: Object, required: true },
   tasks: { type: Array, required: true }
 });
+
+UserSchema.methods.hashPassword = password => {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+};
+
+UserSchema.methods.comparePasswordS = (password, hash) => {
+  return bcrypt.compareSync(password, hash);
+};
 
 module.exports = User = mongoose.model('user', UserSchema);
