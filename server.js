@@ -3,7 +3,8 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   dotenv = require('dotenv'),
   tasks = require('./routes/api/tasks'),
-  path = require('path');
+  path = require('path'),
+  passport = require('passport');
 
 const env = dotenv.config({ path: 'config/variables.env' });
 const db = env.parsed.DATABASE;
@@ -37,6 +38,10 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
   });
 }
+
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Define port
 const port = process.env.PORT || 5000;

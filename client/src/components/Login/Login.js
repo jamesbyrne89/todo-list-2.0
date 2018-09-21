@@ -16,12 +16,19 @@ class Login extends Component {
 
   handleInput = e => {
     const { name, value } = e.target;
-    this.setState({ credentials: { [name]: value } });
+    console.log(name);
+    this.setState({
+      credentials: { ...this.state.credentials, [name]: value }
+    });
   };
 
   componentDidMount() {
     this.emailRef.current.input.focus();
   }
+
+  handleSubmit = () => {
+    console.log(this.state.credentials);
+  };
 
   render() {
     return (
@@ -47,7 +54,9 @@ class Login extends Component {
           />
           <footer className="card-footer">
             <Link to="/register">Don't have an account yet? Sign up here.</Link>
-            <Button className="login-btn">Log in</Button>
+            <Button className="login-btn" onClick={this.handleSubmit}>
+              Log in
+            </Button>
           </footer>
         </Card>
       </div>
