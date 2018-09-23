@@ -54,8 +54,4 @@ router.put('/:id', (req, res) => {
   );
 });
 
-router.get('/signin', (req, res) => {
-  return res.json('Sign in here')
-})
-
 module.exports = router;

@@ -3,6 +3,7 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   dotenv = require('dotenv'),
   tasks = require('./routes/api/tasks'),
+  auth = require('./routes/api/auth'),
   path = require('path'),
   passport = require('passport');
 
@@ -24,10 +25,7 @@ mongoose
 
 // Use routes
 app.use('/api/tasks', tasks);
-
-app.get('/signin', (req, res) => {
-  return res.json('Sign in here');
-});
+app.use('/api/auth', auth);
 
 //Serve static assets if in production environment
 if (process.env.NODE_ENV === 'production') {
@@ -38,7 +36,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
   });
 }
-
 
 app.use(passport.initialize());
 app.use(passport.session());
