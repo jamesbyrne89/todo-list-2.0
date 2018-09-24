@@ -18,10 +18,22 @@ module.exports = function(passport) {
   passport.use(
     'local-signup',
     new LocalStrategy((username, password, done) => {
-      console.log(username, password);
       User.findOne({ username }, (err, doc) => {
         if (err) {
-          done(err);
+          return done(err);
+        }
+        if (doc) {
+          let valid = doc.comparePassword(password, doc.password);
+          if (valid) {
+            done(null, {
+              username: doc.username,
+              password: doc.password
+            });
+          } else {
+            done(null, false);
+          }
+        } else {
+          done(null, false);
         }
       });
     })
