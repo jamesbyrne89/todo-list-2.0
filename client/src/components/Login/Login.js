@@ -28,7 +28,7 @@ class Login extends Component {
   }
 
   handleSubmit = () => {
-    console.log(this.state.credentials);
+    axios.post('/login', {}).then(res => console.log(res)).catch(err => console.error(err));
   };
 
   render() {

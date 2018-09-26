@@ -3,7 +3,7 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   dotenv = require('dotenv'),
   tasks = require('./routes/api/tasks'),
-  auth = require('./routes/api/auth'),
+  auth = require('./routes/auth'),
   path = require('path'),
   passport = require('passport');
 
@@ -25,7 +25,7 @@ mongoose
 
 // Use routes
 app.use('/api/tasks', tasks);
-app.use('/api/auth', auth);
+app.use('/auth', auth);
 
 //Serve static assets if in production environment
 if (process.env.NODE_ENV === 'production') {
