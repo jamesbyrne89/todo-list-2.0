@@ -1,6 +1,8 @@
 const LocalStrategy = require('passport-local').Strategy;
+const User = require('./models/User');
 
 module.exports = function(passport) {
+  console.log('passport.js');
   // Configure Passport authenticated session persistence
   passport.serializeUser((user, done) => {
     done(null, user.id);
@@ -15,25 +17,28 @@ module.exports = function(passport) {
   // Configure the local strategy for Passport
   passport.use(
     'local-signup',
-    new LocalStrategy({
-      usernameField: 'email',
-      passwordField: 'password'
-    },(username, password, done) => {
-      User.findOne({ username }, (err, user) => {
-        if (err) {
-          return done(err);
-        }
-        if (user) {
-          let valid = user.comparePassword(password, user.password);
-          if (valid) {
-            done(null, user);
-          } else {
-            done(null, false, { message: 'Incorrect password.' });
+    new LocalStrategy(
+      {
+        usernameField: 'email',
+        passwordField: 'password'
+      },
+      (username, password, done) => {
+        User.findOne({ username }, (err, user) => {
+          if (err) {
+            return done(err);
           }
-        } else {
-          done(null, false, { message: 'No user found' });
-        }
-      });
-    })
+          if (user) {
+            let valid = user.comparePassword(password, user.password);
+            if (valid) {
+              done(null, user);
+            } else {
+              done(null, false, { message: 'Incorrect password.' });
+            }
+          } else {
+            done(null, false, { message: 'No user found' });
+          }
+        });
+      }
+    )
   );
 };

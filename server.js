@@ -3,9 +3,12 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   dotenv = require('dotenv'),
   tasks = require('./routes/api/tasks'),
-  auth = require('./routes/auth'),
+  passport = require('passport'),
   path = require('path'),
-  passport = require('passport');
+  auth = require('./routes/auth')(),
+  passportConfig = require('./passport');
+
+passportConfig(passport);
 
 const env = dotenv.config({ path: 'config/variables.env' });
 const db = env.parsed.DATABASE;
@@ -23,6 +26,8 @@ mongoose
   .then(() => console.log('db connected', db))
   .catch(err => console.log('MongoDB error'));
 
+app.use(passport.initialize());
+app.use(passport.session());
 // Use routes
 app.use('/api/tasks', tasks);
 app.use('/auth', auth);
@@ -36,9 +41,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
   });
 }
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Define port
 const port = process.env.PORT || 5000;

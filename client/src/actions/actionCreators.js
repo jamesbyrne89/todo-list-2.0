@@ -56,6 +56,16 @@ export const taskActions = {
 };
 
 export const authActions = {
-  login: () => ({ type: 'LOGIN', payload: true }),
+  login: task => dispatch => {
+    dispatch({ type: 'LOGGING_IN', payload: true });
+    axios
+      .post('/api/tasks', task)
+      .then(res => {
+        dispatch({ type: 'HAS_ERROR', payload: false });
+        dispatch({ type: 'ADD_TASK', payload: res.data });
+        dispatch({ type: 'TASKS_LOADING', payload: false });
+      })
+      .catch(err => dispatch({ type: 'HAS_ERROR', payload: true }));
+  },
   logout: () => ({ type: 'LOGOUT', payload: false })
 };
