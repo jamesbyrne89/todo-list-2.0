@@ -24,6 +24,7 @@ const UserSchema = new Schema({
     ],
     required: 'Please provide an email address'
   },
+  password: { type: String },
   joined: { type: Object, required: true },
   tasks: { type: Array, required: true }
 });

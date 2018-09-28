@@ -21,9 +21,9 @@ class Register extends Component {
   };
 
   handleSubmit = () => {
-    const { email, password } = this.state.credentials;
+    const { firstName, lastName, email, password } = this.state.credentials;
     axios
-      .post('/auth/login', { email, password })
+      .post('/auth/register', { firstName, lastName, email, password })
       .then(res => console.log(res))
       .catch(err => console.error(err));
   };
@@ -50,14 +50,18 @@ class Register extends Component {
           name="password"
           label="Password"
           className="signin-input"
+          type="password"
         />
         <Input
           s={6}
           name="confirmPassword"
           label="Repeat password"
           className="signin-input"
+          type="password"
         />
-        <Button className="login-btn">Log in</Button>
+        <Button className="login-btn" onClick={this.handleSubmit}>
+          Log in
+        </Button>
       </Card>
     );
   }
