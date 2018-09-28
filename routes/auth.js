@@ -5,7 +5,7 @@ const express = require('express'),
 router.post('/register', function(req, res) {
   console.log(req.body);
   var body = req.body,
-    username = body.username,
+    username = body.email,
     password = body.password;
   User.findOne(
     {
@@ -13,6 +13,7 @@ router.post('/register', function(req, res) {
     },
     function(err, doc) {
       if (err) {
+        console.log('error', err);
         res.status(500).send('error occured');
       } else {
         if (doc) {
@@ -23,6 +24,7 @@ router.post('/register', function(req, res) {
           record.password = record.hashPassword(password);
           record.save(function(err, user) {
             if (err) {
+              console.log('db error', err);
               res.status(500).send('db error');
             } else {
               res.redirect('/login');
