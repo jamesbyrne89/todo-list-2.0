@@ -6,7 +6,7 @@ const express = require('express'),
 router.post(
   '/login',
   passport.authenticate('local', {
-    failureRedirect: '/login',
+    failureRedirect: '/',
     successRedirect: '/'
   }),
   (req, res) => {

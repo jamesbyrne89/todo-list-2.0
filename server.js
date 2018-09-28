@@ -5,10 +5,8 @@ const express = require('express'),
   tasks = require('./routes/api/tasks'),
   passport = require('passport'),
   path = require('path'),
-  auth = require('./routes/auth')(),
   passportConfig = require('./passport');
-
-passportConfig(passport);
+  auth = require('./routes/auth');
 
 const env = dotenv.config({ path: 'config/variables.env' });
 const db = env.parsed.DATABASE;
