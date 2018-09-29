@@ -16,7 +16,6 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { taskActions } from './actions/actionCreators';
-import axios from 'axios';
 
 const mapStateToProps = store => {
   return store;
