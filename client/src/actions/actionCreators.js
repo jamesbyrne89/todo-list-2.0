@@ -56,14 +56,19 @@ export const taskActions = {
 };
 
 export const authActions = {
-  login: task => dispatch => {
-    dispatch({ type: 'LOGGING_IN', payload: true });
+  getCurrentSession: () => {
+    console.log(localStorage.getItem('user'));
+    return {
+      type: 'SET_USER',
+      payload: localStorage.getItem('user')
+    };
+  },
+  login: credentials => dispatch => {
     axios
-      .post('/api/tasks', task)
+      .post('/auth/login', credentials)
       .then(res => {
-        dispatch({ type: 'HAS_ERROR', payload: false });
-        dispatch({ type: 'ADD_TASK', payload: res.data });
-        dispatch({ type: 'TASKS_LOADING', payload: false });
+        localStorage.setItem('user', res.data.user);
+        dispatch({ type: 'SET_USER', payload: res.data.user });
       })
       .catch(err => dispatch({ type: 'HAS_ERROR', payload: true }));
   },

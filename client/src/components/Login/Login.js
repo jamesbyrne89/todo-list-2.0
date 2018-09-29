@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Input, Card } from 'react-materialize';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 class Login extends Component {
   constructor() {
@@ -28,10 +27,7 @@ class Login extends Component {
 
   handleSubmit = () => {
     const { email, password } = this.state.credentials;
-    axios
-      .post('/auth/login', { email, password })
-      .then(res => console.log(res.data))
-      .catch(err => console.error(err));
+    this.props.login({ email, password });
   };
 
   render() {

@@ -33,7 +33,6 @@ function config(passport) {
           if (!user.comparePasswords(password, user.password)) {
             return done(null, false, { message: 'Incorrect password.' });
           }
-          console.log({ user });
           return done(null, user);
         });
       }

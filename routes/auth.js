@@ -37,8 +37,11 @@ router.post('/register', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  console.log('Logging in');
-  res.send('Hi');
+  if (req.session && req.session.passport) {
+    res.send(req.session.passport);
+  } else {
+    res.send('Boo! No session');
+  }
 });
 
 module.exports = router;

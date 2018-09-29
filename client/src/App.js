@@ -15,7 +15,7 @@ import Register from './components/Register/Register';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { taskActions } from './actions/actionCreators';
+import { authActions, taskActions } from './actions/actionCreators';
 
 const mapStateToProps = store => {
   return store;
@@ -28,7 +28,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(taskActions.toggleCompleted(id, completedState)),
     deleteTask: id => dispatch(taskActions.delete(id)),
     fetchTasks: () => dispatch(taskActions.fetch()),
-    tasksLoading: dispatch(taskActions.isLoading)
+    tasksLoading: dispatch(taskActions.isLoading),
+    login: credentials => dispatch(authActions.login(credentials)),
+    getCurrentSession: () => dispatch(authActions.getCurrentSession())
   };
 };
 
@@ -36,29 +38,47 @@ const ProtectedRoute = ({
   component: Component,
   authenticated,
   ...otherProps
-}) => (
-  <Route
-    {...otherProps}
-    render={props =>
-      authenticated ? <Component {...props} /> : <Redirect to="/login" />
-    }
-  />
-);
+}) => {
+  console.log({ authenticated });
+  return (
+    <Route
+      {...otherProps}
+      render={props =>
+        authenticated ? <Redirect to="/" /> : <Redirect to="/login" />
+      }
+    />
+  );
+};
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchTasks();
+    this.props.getCurrentSession();
   }
   render() {
+    console.log(this.props.auth);
     return (
       <Router>
         <Fragment>
           <NavBar title="Todo List" />
           <Switch>
             <div className="app-container">
-              <Route path="/login" component={Login} />
+              <Route
+                path="/login"
+                render={props =>
+                  this.props.authenticated ? (
+                    <Redirect to="/" />
+                  ) : (
+                    <Login login={this.props.login} />
+                  )
+                }
+              />
               <Route path="/register" component={Register} />
-              <ProtectedRoute exact path="/" component={List} />
+              <ProtectedRoute
+                exact
+                path="/"
+                component={List}
+                authenticated={this.props.auth.user}
+              />
             </div>
           </Switch>
         </Fragment>
