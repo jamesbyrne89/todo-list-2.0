@@ -3,7 +3,6 @@ const LocalStrategy = require('passport-local').Strategy,
   User = require('./models/User');
 
 function config(passport) {
-  console.log('passport.js');
   // Configure Passport authenticated session persistence
   passport.serializeUser((user, done) => {
     done(null, user.id);
@@ -32,6 +31,6 @@ function config(passport) {
       });
     })
   );
-};
+}
 
 module.exports = config(passport);

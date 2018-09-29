@@ -4,30 +4,31 @@ const express = require('express'),
 
 router.post('/register', function(req, res) {
   console.log(req.body);
-  var body = req.body,
-    username = body.email,
-    password = body.password;
+  const { firstName, lastName, email, password } = req.body;
   User.findOne(
     {
-      username: username
+      email
     },
     function(err, doc) {
       if (err) {
-        console.log('error', err);
         res.status(500).send('error occured');
       } else {
         if (doc) {
           res.status(500).send('Username already exists');
         } else {
-          var record = new User();
-          record.username = username;
+          const record = new User();
+          record.firstName = firstName;
+          record.lastName = lastName;
+          record.email = email;
           record.password = record.hashPassword(password);
+          record.joined = new Date().toDateString();
           record.save(function(err, user) {
             if (err) {
               console.log('db error', err);
               res.status(500).send('db error');
             } else {
-              res.redirect('/login');
+              res.json(user);
+              res.redirect('/');
             }
           });
         }

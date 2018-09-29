@@ -15,7 +15,6 @@ class Register extends Component {
   }
 
   handleInput = e => {
-    console.log(e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -27,7 +26,6 @@ class Register extends Component {
       password,
       confirmPassword
     } = this.state;
-    console.log({ email, password });
     if (password === confirmPassword) {
       axios
         .post('/auth/register', { firstName, lastName, email, password })
