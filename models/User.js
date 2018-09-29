@@ -33,7 +33,7 @@ UserSchema.methods.hashPassword = password => {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 };
 
-UserSchema.methods.comparePasswordS = (password, hash) => {
+UserSchema.methods.comparePasswords = (password, hash) => {
   return bcrypt.compareSync(password, hash);
 };
 

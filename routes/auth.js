@@ -3,7 +3,6 @@ const express = require('express'),
   passport = require('passport');
 
 router.post('/register', function(req, res) {
-  console.log(req.body);
   const { firstName, lastName, email, password } = req.body;
   User.findOne(
     {
@@ -27,7 +26,7 @@ router.post('/register', function(req, res) {
               console.log('db error', err);
               res.status(500).send('db error');
             } else {
-              res.json(user);
+              console.log('Redirect');
               res.redirect('/');
             }
           });
@@ -37,15 +36,9 @@ router.post('/register', function(req, res) {
   );
 });
 
-router.post(
-  '/login',
-  passport.authenticate('local', {
-    failureRedirect: '/',
-    successRedirect: '/'
-  }),
-  (req, res) => {
-    return res.send('Hi');
-  }
-);
+router.post('/login', passport.authenticate('local'), (req, res) => {
+  console.log('Logging in');
+  res.send('Hi');
+});
 
 module.exports = router;

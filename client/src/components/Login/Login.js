@@ -17,7 +17,6 @@ class Login extends Component {
 
   handleInput = e => {
     const { name, value } = e.target;
-    console.log(name);
     this.setState({
       credentials: { ...this.state.credentials, [name]: value }
     });
@@ -31,7 +30,7 @@ class Login extends Component {
     const { email, password } = this.state.credentials;
     axios
       .post('/auth/login', { email, password })
-      .then(res => console.log(res))
+      .then(res => console.log(res.data))
       .catch(err => console.error(err));
   };
 
