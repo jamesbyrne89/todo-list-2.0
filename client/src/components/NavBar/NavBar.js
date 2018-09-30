@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const NavBar = props => (
   <header className="nav">
-    <Link to="/">{props.title}</Link>
+    <a href="/">{props.title}</a>
   </header>
 );
 

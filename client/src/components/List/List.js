@@ -8,7 +8,11 @@ class List extends Component {
   }
 
   render() {
-    return <Card>{this.props.children}</Card>;
+    return (
+      <article className="list-container">
+        <Card>{this.props.children}</Card>
+      </article>
+    );
   }
 }
 

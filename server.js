@@ -3,10 +3,7 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   dotenv = require('dotenv'),
   tasks = require('./routes/api/tasks'),
-  passport = require('passport'),
-  path = require('path'),
-  passportConfig = require('./passport');
-(auth = require('./routes/auth')), (cookieSession = require('cookie-session'));
+  path = require('path');
 
 const env = dotenv.config({ path: 'config/variables.env' });
 const db = env.parsed.DATABASE;
@@ -24,18 +21,8 @@ mongoose
   .then(() => console.log('db connected', db))
   .catch(err => console.log('MongoDB error'));
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(
-  cookieSession({
-    maxAge: 24 * 60 * 60 * 1000, // 1 day
-    keys: [env.parsed.COOKIE_KEY]
-  })
-);
-
 // Use routes
 app.use('/api/tasks', tasks);
-app.use('/auth', auth);
 
 //Serve static assets if in production environment
 if (process.env.NODE_ENV === 'production') {
