@@ -54,23 +54,3 @@ export const taskActions = {
       .catch(err => dispatch({ type: 'HAS_ERROR', payload: true }));
   }
 };
-
-export const authActions = {
-  getCurrentSession: () => {
-    console.log(localStorage.getItem('user'));
-    return {
-      type: 'SET_USER',
-      payload: localStorage.getItem('user')
-    };
-  },
-  login: credentials => dispatch => {
-    axios
-      .post('/auth/login', credentials)
-      .then(res => {
-        localStorage.setItem('user', res.data.user);
-        dispatch({ type: 'SET_USER', payload: res.data.user });
-      })
-      .catch(err => dispatch({ type: 'HAS_ERROR', payload: true }));
-  },
-  logout: () => ({ type: 'LOGOUT', payload: false })
-};
