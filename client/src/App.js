@@ -7,7 +7,7 @@ import AddTask from './components/AddTask/AddTask';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { taskActions } from './actions/actionCreators';
+import taskActions from './actions/actionCreators';
 
 const mapStateToProps = store => {
   return store;

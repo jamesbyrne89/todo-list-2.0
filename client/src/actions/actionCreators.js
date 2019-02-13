@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Fetch tasks
 
-export const taskActions = {
+const taskActions = {
   fetch: () => dispatch => {
     axios
       .get('/api/tasks')
@@ -54,3 +54,5 @@ export const taskActions = {
       .catch(err => dispatch({ type: 'HAS_ERROR', payload: true }));
   }
 };
+
+export default taskActions;
