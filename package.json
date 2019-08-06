@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/jamesbyrne89/todo-list-2.0#readme",
   "devDependencies": {
-    "concurrently": "^3.6.0",
+    "concurrently": "^4.1.1",
     "dotenv": "^8.0.0",
     "nodemon": "^1.17.5",
     "prop-types": "^15.6.2"
